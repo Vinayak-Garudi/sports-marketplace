@@ -1,3 +1,5 @@
+import nextConfig from "@/next.config";
+
 interface FetchOptions extends RequestInit {
   params?: Record<string, string>;
 }
@@ -7,7 +9,7 @@ interface ApiError extends Error {
   data?: any;
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
+const BASE_URL = nextConfig?.publicRuntimeConfig?.apiUrl || '';
 
 /**
  * Handles API requests with proper error handling and type safety

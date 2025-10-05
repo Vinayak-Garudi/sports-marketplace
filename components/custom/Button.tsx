@@ -21,7 +21,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <ShadcnButton
-      className={cn("flex items-center gap-2", className)}
+      className={cn("flex items-center gap-2 cursor-pointer", className)}
       {...props}
     >
       {Icon && iconPosition === "left" && (
