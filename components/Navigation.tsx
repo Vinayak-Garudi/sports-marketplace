@@ -1,7 +1,26 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import Link from "next/link";
+import { cookies } from "next/headers";
+import { Button } from "@/components/ui/button";
 
-export default function Navigation() {
+async function handleLogout() {
+  "use server";
+  const cookieStore = await cookies();
+  cookieStore.delete("user-role");
+}
+
+export default async function Navigation() {
+  // Check if user-role cookie is 'admin'
+  const cookieStore = await cookies();
+  const userRole = cookieStore.get("user-role");
+  const isAdmin = userRole?.value === "admin";
+
+  const handleLogout = async () => {
+    "use server";
+    const cookieStore = await cookies();
+    cookieStore.delete("user-role");
+    window.location.href = "/";
+  };
+
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
@@ -10,11 +29,20 @@ export default function Navigation() {
             <span className="text-2xl">🎾</span>
             <span className="font-bold text-lg">Tennis Marketplace</span>
           </Link>
-          
+
           <div className="flex items-center gap-4">
-                <Link href="/sell">
-                  <Button variant={'ghost'}>Sell Equipment</Button>
+            {isAdmin && (
+              <>
+                <Link href="/admin/sell">
+                  <Button variant={"ghost"}>Sell Equipment</Button>
                 </Link>
+                <form action={handleLogout}>
+                  <Button type="submit" variant="outline">
+                    Logout
+                  </Button>
+                </form>
+              </>
+            )}
             <Link href="/browse">
               <Button>Browse</Button>
             </Link>

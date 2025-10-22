@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { getAllEquipment } from '@/lib/data';
+import EquipmentCard from '@/components/EquipmentCard';
 
 export default function Home() {
   const equipment = getAllEquipment().slice(0, 6);
@@ -72,30 +73,7 @@ export default function Home() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {equipment.map((item) => (
-              <Card key={item.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex justify-between items-start mb-2">
-                    <div className="text-2xl font-bold text-primary">Rs.{item.price}</div>
-                    <div className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
-                      {item.condition}
-                    </div>
-                  </div>
-                  <CardTitle className="line-clamp-1">{item.title}</CardTitle>
-                  <CardDescription className="line-clamp-2">
-                    {item.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2 text-sm text-muted-foreground mb-4">
-                    <div>📍 {item.location}</div>
-                    {item.brand && <div>🏷️ {item.brand}</div>}
-                    <div className="capitalize">📦 {item.category}</div>
-                  </div>
-                  <Link href={`/equipment/${item.id}`}>
-                    <Button className="w-full" size="sm">View Details</Button>
-                  </Link>
-                </CardContent>
-              </Card>
+              <EquipmentCard key={item.id} equipment={item} />
             ))}
           </div>
         </div>

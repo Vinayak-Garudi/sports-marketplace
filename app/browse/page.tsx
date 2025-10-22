@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { filterEquipment } from '@/lib/data';
 import FilterForm from '@/components/FilterForm';
+import EquipmentCard from '@/components/EquipmentCard';
 
 interface BrowsePageProps {
   searchParams: Promise<{
@@ -69,33 +70,7 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
             ) : (
               <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
                 {equipment.map((item) => (
-                  <Card key={item.id} className="hover:shadow-lg transition-shadow flex flex-col">
-                    <CardHeader className="flex-1">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="text-2xl font-bold text-primary">Rs. {item.price}</div>
-                        <div className="text-xs bg-primary/10 text-primary px-2 py-1 rounded capitalize">
-                          {item.condition}
-                        </div>
-                      </div>
-                      <CardTitle className="line-clamp-1">{item.title}</CardTitle>
-                      <CardDescription className="line-clamp-2">
-                        {item.description}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-2 text-sm text-muted-foreground mb-4">
-                        <div>📍 {item.location}</div>
-                        {item.brand && <div>🏷️ {item.brand}</div>}
-                        <div className="capitalize">📦 {item.category}</div>
-                        <div className="text-xs">
-                          Listed {new Date(item.createdAt).toLocaleDateString()}
-                        </div>
-                      </div>
-                      <Link href={`/equipment/${item.id}`}>
-                        <Button className="w-full" size="sm">View Details</Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
+                  <EquipmentCard key={item.id} equipment={item} />
                 ))}
               </div>
             )}

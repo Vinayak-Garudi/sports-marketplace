@@ -30,6 +30,7 @@ export default function SellPage() {
           </CardHeader>
           <CardContent>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>✓ Add clear, well-lit photos of your equipment</li>
               <li>✓ Be honest about the condition of your equipment</li>
               <li>✓ Set a fair and competitive price</li>
               <li>✓ Include detailed descriptions and specifications</li>

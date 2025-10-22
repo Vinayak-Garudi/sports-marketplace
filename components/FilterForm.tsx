@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState, useTransition } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -34,6 +34,10 @@ export default function FilterForm({ initialFilters }: FilterFormProps) {
     maxPrice: initialFilters.maxPrice?.toString() || '',
     search: initialFilters.search || '',
   });
+
+  useEffect(() => {
+    onUserInput();
+  }, [filters]);
 
   const applyFilters = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -86,8 +90,12 @@ export default function FilterForm({ initialFilters }: FilterFormProps) {
     });
   };
 
+  const onUserInput = () => {
+      applyFilters();
+  }
+
   return (
-    <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); applyFilters(); }}>
+    <form className="space-y-4">
       <div>
         <label className="text-sm font-medium mb-2 block">Search</label>
         <Input
@@ -159,9 +167,9 @@ export default function FilterForm({ initialFilters }: FilterFormProps) {
       </div>
 
       <div className="space-y-2 pt-4">
-        <Button type="submit" className="w-full" disabled={isPending}>
+        {/* <Button type="submit" className="w-full" disabled={isPending}>
           {isPending ? 'Applying...' : 'Apply Filters'}
-        </Button>
+        </Button> */}
         <Button
           type="button"
           variant="outline"

@@ -11,12 +11,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { submitEquipment } from '@/app/sell/actions';
+import { submitEquipment } from '@/app/admin/sell/actions';
+import ImageUpload from '@/components/ImageUpload';
 
 export default function SellForm() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
+  const [images, setImages] = useState<string[]>([]);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -51,6 +53,11 @@ export default function SellForm() {
     Object.entries(formData).forEach(([key, value]) => {
       formDataObj.append(key, value);
     });
+    
+    // Add images to form data
+    if (images.length > 0) {
+      formDataObj.append('images', JSON.stringify(images));
+    }
 
     startTransition(async () => {
       const result = await submitEquipment(formDataObj);
@@ -70,6 +77,12 @@ export default function SellForm() {
           {error}
         </div>
       )}
+
+      <ImageUpload
+        images={images}
+        onImagesChange={setImages}
+        maxImages={5}
+      />
 
       <div>
         <label className="text-sm font-medium mb-2 block">

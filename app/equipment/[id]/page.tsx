@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { getEquipmentById } from '@/lib/data';
 import ContactSellerButton from '@/components/ContactSellerButton';
+import ImageGallery from '@/components/ImageGallery';
 
 interface EquipmentPageProps {
   params: Promise<{
@@ -27,6 +28,11 @@ export default async function EquipmentPage({ params }: EquipmentPageProps) {
         </Link>
 
         <div className="grid gap-8">
+          {/* Image Gallery */}
+          {equipment.images && equipment.images.length > 0 && (
+            <ImageGallery images={equipment.images} title={equipment.title} />
+          )}
+
           <Card>
             <CardHeader>
               <div className="flex justify-between items-start gap-4 mb-4">
@@ -99,6 +105,14 @@ export default async function EquipmentPage({ params }: EquipmentPageProps) {
               <div>
                 <div className="text-sm text-muted-foreground mb-1">Location</div>
                 <div className="font-medium">{equipment.location}</div>
+              </div>
+              <div>
+                <div className="text-sm text-muted-foreground mb-1">Email</div>
+                <div className="font-medium">{equipment.sellerEmail}</div>
+              </div>
+              <div>
+                <div className="text-sm text-muted-foreground mb-1">Phone Number</div>
+                <div className="font-medium">{equipment.sellerPhone}</div>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <ContactSellerButton

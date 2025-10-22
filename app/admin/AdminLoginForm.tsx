@@ -10,17 +10,47 @@ export default function AdminLoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  // Hash password using SHA-256
+  const hashPassword = async (password: string): Promise<string> => {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+    return hashHex;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // TODO: Implement admin authentication logic
-    console.log("Login attempt:", { username, password });
-    
-    // Simulate API call
-    setTimeout(() => {
+
+    try {
+      // Hash the password before sending
+      const hashedPassword = await hashPassword(password);
+
+      const loginData = {
+        username,
+        password: hashedPassword,
+      };
+
+      // TODO: Implement admin authentication logic
+      console.log("Login attempt:", loginData);
+      console.log("Logging in with:", { username, userRole: "admin" });
+
+      // Set user role in cookies
+      document.cookie = `user-role=admin; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days expiry
+
+      // Implement your authentication logic here
+      // For example: call an API route, verify credentials, redirect, etc.
+
       setIsLoading(false);
-    }, 1000);
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Error during login:", error);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -76,11 +106,7 @@ export default function AdminLoginForm() {
         </div>
       </div>
 
-      <Button
-        type="submit"
-        disabled={isLoading}
-        className="w-full"
-      >
+      <Button type="submit" disabled={isLoading} className="w-full">
         {isLoading ? "Logging in..." : "Login"}
       </Button>
     </form>

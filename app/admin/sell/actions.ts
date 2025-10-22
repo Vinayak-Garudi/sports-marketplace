@@ -15,6 +15,8 @@ export async function submitEquipment(formData: FormData) {
     const sellerEmail = formData.get('sellerEmail') as string;
     const sellerPhone = formData.get('sellerPhone') as string;
     const location = formData.get('location') as string;
+    const imagesJson = formData.get('images') as string;
+    const images = imagesJson ? JSON.parse(imagesJson) : undefined;
 
     // Validate required fields
     if (!title || !description || !category || !condition || !price || !sellerName || !sellerEmail || !location) {
@@ -43,6 +45,7 @@ export async function submitEquipment(formData: FormData) {
       sellerEmail,
       sellerPhone,
       location,
+      images,
     });
 
     return {

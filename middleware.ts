@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server'
 const protectedRoutes = {
   // '/admin': ['admin'],
   // '/dashboard': ['admin', 'user'],
-  "/sell": ["admin"],
+  "/admin/sell": ["admin"],
   // Add more routes and their allowed roles as needed
 }
 
@@ -16,7 +16,7 @@ export function middleware(request: NextRequest) {
 
   // Get the user's role from the session/token
   // This is an example - replace with your actual auth logic
-  const userRole = request.headers.get('x-user-role') || 'guest'
+  const userRole = request.cookies.get('user-role')?.value || 'guest'
 
   // Check if the current path is protected
   const isProtectedRoute = Object.keys(protectedRoutes).some(route => 
@@ -48,8 +48,9 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // Add routes that should be protected
-    '/admin/:path*',
-    '/dashboard/:path*',
+    '/admin/sell',
+    '/admin/sell/:path*',
+    // '/dashboard/:path*',
     // Add more routes as needed
   ]
 }

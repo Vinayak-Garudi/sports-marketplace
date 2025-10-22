@@ -14,6 +14,10 @@ let equipmentStore: TennisEquipment[] = [
     sellerEmail: 'nikhil@example.com',
     sellerPhone: '+918652051714',
     location: 'Mumbai, India',
+    images: [
+      'https://images.unsplash.com/photo-1622163642998-1ea32b0bbc67?w=800&q=80',
+      'https://images.unsplash.com/photo-1617083278066-d6be49c6a6f8?w=800&q=80',
+    ],
     createdAt: new Date('2024-10-15').toISOString(),
   },
   {
@@ -28,6 +32,9 @@ let equipmentStore: TennisEquipment[] = [
     sellerEmail: 'vinayak@example.com',
     sellerPhone: '+918652051715',
     location: 'Delhi, India',
+    images: [
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+    ],
     createdAt: new Date('2024-10-18').toISOString(),
   },
   {
@@ -42,6 +49,11 @@ let equipmentStore: TennisEquipment[] = [
     sellerEmail: 'pravin@example.com',
     sellerPhone: '+918652051715',
     location: 'Bangalore, India',
+    images: [
+      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+      'https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?w=800&q=80',
+      'https://images.unsplash.com/photo-1547949003-9792a18a2601?w=800&q=80',
+    ],
     createdAt: new Date('2024-10-20').toISOString(),
   },
 ];
