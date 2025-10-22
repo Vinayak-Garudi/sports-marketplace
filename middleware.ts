@@ -3,14 +3,13 @@ import type { NextRequest } from 'next/server'
 
 // Define your protected routes and their required roles
 const protectedRoutes = {
-  '/admin': ['admin'],
-  '/dashboard': ['admin', 'user'],
+  // '/admin': ['admin'],
+  // '/dashboard': ['admin', 'user'],
+  "/sell": ["admin"],
   // Add more routes and their allowed roles as needed
 }
 
 export function middleware(request: NextRequest) {
-
-  return NextResponse.next()
 
   // Get the pathname from the URL
   const path = request.nextUrl.pathname

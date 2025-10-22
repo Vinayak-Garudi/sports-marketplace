@@ -12,11 +12,11 @@ export default function Navigation() {
           </Link>
           
           <div className="flex items-center gap-4">
+                <Link href="/sell">
+                  <Button variant={'ghost'}>Sell Equipment</Button>
+                </Link>
             <Link href="/browse">
-              <Button variant="ghost">Browse</Button>
-            </Link>
-            <Link href="/sell">
-              <Button>Sell Equipment</Button>
+              <Button>Browse</Button>
             </Link>
           </div>
         </div>

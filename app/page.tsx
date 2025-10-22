@@ -16,15 +16,15 @@ export default function Home() {
               Second-Hand Tennis Equipment Marketplace
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Buy and sell quality used tennis gear. Connect directly with sellers in your area.
+              Buy quality used tennis gear. Connect directly with sellers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/browse">
-                <Button size="lg">Browse Equipment</Button>
+                <Button size="lg">Browse Equipments</Button>
               </Link>
-              <Link href="/sell">
+              {/* <Link href="/sell">
                 <Button size="lg" variant="outline">Sell Your Gear</Button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
@@ -52,9 +52,9 @@ export default function Home() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Sell</CardTitle>
+              <CardTitle>Own</CardTitle>
               <CardDescription>
-                List your unused tennis equipment for free and connect with interested buyers.
+                Get quality tennis gear at great prices and enjoy your game!
               </CardDescription>
             </CardHeader>
           </Card>
@@ -102,7 +102,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 container mx-auto px-4">
+      {/* <section className="py-16 container mx-auto px-4">
         <Card className="bg-primary text-primary-foreground">
           <CardHeader className="text-center">
             <CardTitle className="text-3xl mb-4">Ready to Get Started?</CardTitle>
@@ -121,7 +121,7 @@ export default function Home() {
             </div>
           </CardHeader>
         </Card>
-      </section>
+      </section> */}
     </div>
   );
 }

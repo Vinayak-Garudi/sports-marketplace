@@ -37,9 +37,9 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
               Found {equipment.length} {equipment.length === 1 ? 'item' : 'items'}
             </p>
           </div>
-          <Link href="/sell">
+          {/* <Link href="/sell">
             <Button>Sell Your Gear</Button>
-          </Link>
+          </Link> */}
         </div>
 
         <div className="grid lg:grid-cols-[280px_1fr] gap-8">
