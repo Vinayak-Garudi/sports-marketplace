@@ -9,6 +9,9 @@ const protectedRoutes = {
 }
 
 export function middleware(request: NextRequest) {
+
+  return NextResponse.next()
+
   // Get the pathname from the URL
   const path = request.nextUrl.pathname
 
