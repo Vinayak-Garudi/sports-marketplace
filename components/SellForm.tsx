@@ -144,7 +144,7 @@ export default function SellForm() {
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
           <label className="text-sm font-medium mb-2 block">
-            Price ($) <span className="text-destructive">*</span>
+            Price (Rs.) <span className="text-destructive">*</span>
           </label>
           <Input
             type="number"
@@ -204,7 +204,7 @@ export default function SellForm() {
             </label>
             <Input
               type="tel"
-              placeholder="+1 (555) 123-4567"
+              placeholder="+91 "
               value={formData.sellerPhone}
               onChange={(e) => setFormData({ ...formData, sellerPhone: e.target.value })}
             />

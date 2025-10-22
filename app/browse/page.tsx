@@ -72,7 +72,7 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
                   <Card key={item.id} className="hover:shadow-lg transition-shadow flex flex-col">
                     <CardHeader className="flex-1">
                       <div className="flex justify-between items-start mb-2">
-                        <div className="text-2xl font-bold text-primary">${item.price}</div>
+                        <div className="text-2xl font-bold text-primary">Rs. {item.price}</div>
                         <div className="text-xs bg-primary/10 text-primary px-2 py-1 rounded capitalize">
                           {item.condition}
                         </div>

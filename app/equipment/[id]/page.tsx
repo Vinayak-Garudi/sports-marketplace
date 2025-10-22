@@ -41,7 +41,7 @@ export default async function EquipmentPage({ params }: EquipmentPageProps) {
                     </span>
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-primary">${equipment.price}</div>
+                <div className="text-4xl font-bold text-primary">Rs.{equipment.price}</div>
               </div>
             </CardHeader>
             <CardContent className="space-y-6">
