@@ -44,7 +44,9 @@ export default function AdminLoginForm() {
       console.log("Login response:", response.data);
 
       // Set user role in cookies
-      document.cookie = `user-role=admin; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days expiry
+      document.cookie = `user-role=${
+        response.data.user.role
+      }; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days expiry
       document.cookie = `user-token=${response.data.token}; path=/; max-age=${
         60 * 60 * 24 * 7
       }`; // 7 days expiry

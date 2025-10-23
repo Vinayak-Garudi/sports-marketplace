@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
 import { redirect, RedirectType } from "next/navigation";
+import { handleAuthLogout } from "@/lib/authHandler";
 
 export default async function Navigation() {
   // Check if user-role cookie is 'admin'
@@ -11,8 +12,7 @@ export default async function Navigation() {
 
   const handleLogout = async () => {
     "use server";
-    const cookieStore = await cookies();
-    cookieStore.delete("user-role");
+    await handleAuthLogout();
     redirect("/", RedirectType.replace);
   };
 
@@ -31,11 +31,9 @@ export default async function Navigation() {
                 <Link href="/admin/sell">
                   <Button variant={"ghost"}>Sell Equipment</Button>
                 </Link>
-                <form action={handleLogout}>
-                  <Button type="submit" variant="outline">
-                    Logout
-                  </Button>
-                </form>
+                <Button variant="outline" onClick={handleLogout}>
+                  Logout
+                </Button>
               </>
             )}
             <Link href="/browse">
