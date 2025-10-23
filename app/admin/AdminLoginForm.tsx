@@ -69,6 +69,7 @@ export default function AdminLoginForm() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          autoFocus
           className="w-full"
         />
       </div>

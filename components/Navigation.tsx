@@ -1,12 +1,7 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
-
-async function handleLogout() {
-  "use server";
-  const cookieStore = await cookies();
-  cookieStore.delete("user-role");
-}
+import { redirect, RedirectType } from "next/navigation";
 
 export default async function Navigation() {
   // Check if user-role cookie is 'admin'
@@ -18,7 +13,7 @@ export default async function Navigation() {
     "use server";
     const cookieStore = await cookies();
     cookieStore.delete("user-role");
-    window.location.href = "/";
+    redirect("/", RedirectType.replace);
   };
 
   return (
