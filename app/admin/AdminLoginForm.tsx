@@ -70,6 +70,7 @@ export default function AdminLoginForm() {
           onChange={(e) => setUsername(e.target.value)}
           required
           autoFocus
+          maxLength={50}
           className="w-full"
         />
       </div>
@@ -88,6 +89,7 @@ export default function AdminLoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          minLength={6}
           className="w-full"
         />
         <div className="flex items-center mt-2">
