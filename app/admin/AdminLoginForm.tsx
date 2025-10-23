@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Input } from "@/components/custom/Input";
 import { Button } from "@/components/custom/Button";
+import { apiRequest } from "@/lib/api";
 
 export default function AdminLoginForm() {
   const [username, setUsername] = useState("");
@@ -35,15 +36,18 @@ export default function AdminLoginForm() {
         password: hashedPassword,
       };
 
-      // TODO: Implement admin authentication logic
-      console.log("Login attempt:", loginData);
-      console.log("Logging in with:", { username, userRole: "admin" });
+      const response = await apiRequest("auth/login", {
+        method: "POST",
+        body: JSON.stringify(loginData),
+      });
+
+      console.log("Login response:", response.data);
 
       // Set user role in cookies
       document.cookie = `user-role=admin; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days expiry
-
-      // Implement your authentication logic here
-      // For example: call an API route, verify credentials, redirect, etc.
+      document.cookie = `user-token=${response.data.token}; path=/; max-age=${
+        60 * 60 * 24 * 7
+      }`; // 7 days expiry
 
       setIsLoading(false);
       window.location.href = "/";
