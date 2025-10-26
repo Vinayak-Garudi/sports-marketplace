@@ -9,16 +9,16 @@ import {
 import { ImageIcon } from "lucide-react";
 import { TennisEquipment } from "@/types";
 import DeleteButton from "./DeleteButton";
-import { cookies } from "next/headers";
 
 interface EquipmentCardProps {
   equipment: TennisEquipment;
+  isAdmin?: boolean;
 }
 
-export default async function EquipmentCard({ equipment }: EquipmentCardProps) {
-  const cookieStore = await cookies();
-  const userRole = cookieStore.get("user-role");
-  const isAdmin = userRole?.value === "admin";
+export default function EquipmentCard({
+  equipment,
+  isAdmin = false,
+}: EquipmentCardProps) {
   return (
     <div className="relative h-full">
       <Link href={`/equipment/${equipment.id}`}>
@@ -58,7 +58,12 @@ export default async function EquipmentCard({ equipment }: EquipmentCardProps) {
               {equipment.brand && <div>🏷️ {equipment.brand}</div>}
               <div className="capitalize">📦 {equipment.category}</div>
               <div className="text-xs">
-                Listed {new Date(equipment.createdAt).toLocaleDateString()}
+                Listed{" "}
+                {new Date(equipment.createdAt).toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}
               </div>
             </div>
           </CardContent>

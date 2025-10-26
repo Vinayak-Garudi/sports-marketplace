@@ -1,9 +1,10 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { filterEquipment } from '@/lib/data';
-import FilterForm from '@/components/FilterForm';
-import EquipmentCard from '@/components/EquipmentCard';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { paginateEquipment } from "@/lib/data";
+import FilterForm from "@/components/FilterForm";
+import EquipmentList from "@/components/EquipmentList";
+import { cookies } from "next/headers";
 
 interface BrowsePageProps {
   searchParams: Promise<{
@@ -17,7 +18,7 @@ interface BrowsePageProps {
 
 export default async function BrowsePage({ searchParams }: BrowsePageProps) {
   const params = await searchParams;
-  
+
   const filters = {
     category: params.category,
     condition: params.condition,
@@ -26,7 +27,16 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
     search: params.search,
   };
 
-  const equipment = filterEquipment(filters);
+  const {
+    items: equipment,
+    total,
+    hasMore,
+  } = paginateEquipment(filters, 1, 10);
+
+  // Check if user is admin (server-side)
+  const cookieStore = await cookies();
+  const userRole = cookieStore.get("user-role");
+  const isAdmin = userRole?.value === "admin";
 
   return (
     <div className="min-h-screen py-8">
@@ -35,7 +45,7 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
           <div>
             <h1 className="text-4xl font-bold mb-2">Browse Equipment</h1>
             <p className="text-muted-foreground">
-              Found {equipment.length} {equipment.length === 1 ? 'item' : 'items'}
+              Found {total} {total === 1 ? "item" : "items"}
             </p>
           </div>
           {/* <Link href="/sell">
@@ -61,18 +71,21 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
             {equipment.length === 0 ? (
               <Card>
                 <CardContent className="py-12 text-center">
-                  <p className="text-muted-foreground mb-4">No equipment found matching your filters.</p>
+                  <p className="text-muted-foreground mb-4">
+                    No equipment found matching your filters.
+                  </p>
                   <Link href="/browse">
                     <Button variant="outline">Clear Filters</Button>
                   </Link>
                 </CardContent>
               </Card>
             ) : (
-              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                {equipment.map((item) => (
-                  <EquipmentCard key={item.id} equipment={item} />
-                ))}
-              </div>
+              <EquipmentList
+                initialEquipment={equipment}
+                filters={filters}
+                initialHasMore={hasMore}
+                isAdmin={isAdmin}
+              />
             )}
           </div>
         </div>
