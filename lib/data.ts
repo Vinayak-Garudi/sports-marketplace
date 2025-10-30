@@ -3,7 +3,7 @@ import { TennisEquipment } from "@/types";
 // In-memory data store (in a real app, this would be a database)
 let equipmentStore: TennisEquipment[] = [
   {
-    id: "1",
+    _id: "1",
     title: "Wilson Pro Staff RF97",
     description:
       "Excellent condition tennis racket, barely used. Perfect for intermediate to advanced players.",
@@ -22,7 +22,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-15").toISOString(),
   },
   {
-    id: "2",
+    _id: "2",
     title: "Nike Court Air Zoom Vapor Pro",
     description: "Professional tennis shoes, size 10. Worn only a few times.",
     category: "shoes",
@@ -39,7 +39,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-18").toISOString(),
   },
   {
-    id: "3",
+    _id: "3",
     title: "Head Tour Team Backpack",
     description:
       "Spacious tennis bag with multiple compartments. Great for tournaments.",
@@ -59,7 +59,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-20").toISOString(),
   },
   {
-    id: "4",
+    _id: "4",
     title: "Babolat Pure Drive 2023",
     description:
       "Latest model tennis racket, lightly used. Includes original cover.",
@@ -77,7 +77,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-19").toISOString(),
   },
   {
-    id: "5",
+    _id: "5",
     title: "Adidas Barricade Tennis Shoes",
     description: "Durable tennis shoes, size 9. Great grip and support.",
     category: "shoes",
@@ -94,7 +94,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-17").toISOString(),
   },
   {
-    id: "6",
+    _id: "6",
     title: "Wilson Tennis Ball Set",
     description: "Pack of 12 tennis balls. Perfect for practice sessions.",
     category: "balls",
@@ -111,7 +111,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-16").toISOString(),
   },
   {
-    id: "7",
+    _id: "7",
     title: "Yonex Tennis Bag Pro Series",
     description:
       "Professional tennis bag with shoe compartment. Excellent condition.",
@@ -129,7 +129,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-14").toISOString(),
   },
   {
-    id: "8",
+    _id: "8",
     title: "Prince Textreme Beast 100",
     description: "Power racket for aggressive players. Used for 3 months.",
     category: "racket",
@@ -146,7 +146,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-13").toISOString(),
   },
   {
-    id: "9",
+    _id: "9",
     title: "Nike Tennis Visor",
     description: "Lightweight visor for sun protection. Brand new with tags.",
     category: "accessories",
@@ -163,7 +163,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-12").toISOString(),
   },
   {
-    id: "10",
+    _id: "10",
     title: "Under Armour Tennis Shorts",
     description: "Comfortable tennis shorts, size M. Worn a few times.",
     category: "apparel",
@@ -180,7 +180,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-11").toISOString(),
   },
   {
-    id: "11",
+    _id: "11",
     title: "Head Graphene 360+ Extreme",
     description: "Advanced racket with excellent spin potential. Barely used.",
     category: "racket",
@@ -197,7 +197,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-10").toISOString(),
   },
   {
-    id: "12",
+    _id: "12",
     title: "Asics Gel-Resolution 8",
     description: "Top-tier tennis shoes with amazing comfort. Size 10.5.",
     category: "shoes",
@@ -214,7 +214,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-09").toISOString(),
   },
   {
-    id: "13",
+    _id: "13",
     title: "Penn Championship Tennis Balls",
     description: "Professional grade tennis balls. Pack of 18.",
     category: "balls",
@@ -231,7 +231,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-08").toISOString(),
   },
   {
-    id: "14",
+    _id: "14",
     title: "Wilson Federer DNA Backpack",
     description: "Stylish tennis backpack with multiple pockets.",
     category: "bag",
@@ -248,7 +248,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-07").toISOString(),
   },
   {
-    id: "15",
+    _id: "15",
     title: "Dunlop CX 200 Tour",
     description: "Control-oriented racket for advanced players.",
     category: "racket",
@@ -265,7 +265,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-06").toISOString(),
   },
   {
-    id: "16",
+    _id: "16",
     title: "Adidas Tennis Wristbands",
     description: "Set of 4 wristbands. Moisture-wicking material.",
     category: "accessories",
@@ -282,7 +282,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-05").toISOString(),
   },
   {
-    id: "17",
+    _id: "17",
     title: "Nike Court Dri-FIT T-Shirt",
     description: "Breathable tennis t-shirt, size L. Excellent condition.",
     category: "apparel",
@@ -299,7 +299,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-04").toISOString(),
   },
   {
-    id: "18",
+    _id: "18",
     title: "Tecnifibre TFight 305",
     description: "All-around racket with great feel. Used occasionally.",
     category: "racket",
@@ -316,7 +316,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-03").toISOString(),
   },
   {
-    id: "19",
+    _id: "19",
     title: "K-Swiss Hypercourt Express",
     description: "Lightweight tennis shoes, size 9.5. Minimal wear.",
     category: "shoes",
@@ -333,7 +333,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-02").toISOString(),
   },
   {
-    id: "20",
+    _id: "20",
     title: "Slazenger Wimbledon Tennis Balls",
     description: "Official Wimbledon balls. Pack of 12.",
     category: "balls",
@@ -350,7 +350,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-10-01").toISOString(),
   },
   {
-    id: "21",
+    _id: "21",
     title: "Babolat Team Line Duffle Bag",
     description: "Large duffle bag for tennis gear. Like new condition.",
     category: "bag",
@@ -367,7 +367,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-30").toISOString(),
   },
   {
-    id: "22",
+    _id: "22",
     title: "Wilson Blade 98 16x19",
     description: "Perfect for control players. String recently replaced.",
     category: "racket",
@@ -384,7 +384,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-29").toISOString(),
   },
   {
-    id: "23",
+    _id: "23",
     title: "New Balance 996v4 Tennis Shoes",
     description: "Stability-focused tennis shoes, size 11.",
     category: "shoes",
@@ -401,7 +401,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-28").toISOString(),
   },
   {
-    id: "24",
+    _id: "24",
     title: "HEAD Tennis Cap",
     description: "Adjustable tennis cap with UV protection.",
     category: "accessories",
@@ -418,7 +418,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-27").toISOString(),
   },
   {
-    id: "25",
+    _id: "25",
     title: "Adidas Tennis Skirt",
     description: "Comfortable tennis skirt, size S. Built-in shorts.",
     category: "apparel",
@@ -435,7 +435,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-26").toISOString(),
   },
   {
-    id: "26",
+    _id: "26",
     title: "Yonex EZONE 98",
     description: "Modern player racket with excellent feel and power.",
     category: "racket",
@@ -452,7 +452,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-25").toISOString(),
   },
   {
-    id: "27",
+    _id: "27",
     title: "Dunlop Fort Elite Tennis Balls",
     description: "High-quality tournament balls. Pack of 24.",
     category: "balls",
@@ -469,7 +469,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-24").toISOString(),
   },
   {
-    id: "28",
+    _id: "28",
     title: "Prince Team 6 Pack Bag",
     description: "Holds up to 6 rackets. Multiple storage compartments.",
     category: "bag",
@@ -486,7 +486,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-23").toISOString(),
   },
   {
-    id: "29",
+    _id: "29",
     title: "Babolat Pure Aero 2022",
     description: "Rafael Nadal racket. Excellent for spin generation.",
     category: "racket",
@@ -503,7 +503,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-22").toISOString(),
   },
   {
-    id: "30",
+    _id: "30",
     title: "Puma Fuse Tennis Shoes",
     description: "Modern design tennis shoes, size 10. Great condition.",
     category: "shoes",
@@ -520,7 +520,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-21").toISOString(),
   },
   {
-    id: "31",
+    _id: "31",
     title: "Wilson String Dampener Pack",
     description: "Pack of 10 vibration dampeners. Various colors.",
     category: "accessories",
@@ -537,7 +537,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-20").toISOString(),
   },
   {
-    id: "32",
+    _id: "32",
     title: "Lacoste Tennis Polo",
     description: "Classic tennis polo shirt, size M. Barely worn.",
     category: "apparel",
@@ -554,7 +554,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-19").toISOString(),
   },
   {
-    id: "33",
+    _id: "33",
     title: "Head Radical MP 2023",
     description: "Versatile racket suitable for all-court players.",
     category: "racket",
@@ -571,7 +571,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-18").toISOString(),
   },
   {
-    id: "34",
+    _id: "34",
     title: "Mizuno Wave Exceed Tour",
     description: "High-performance tennis shoes, size 9. Excellent cushioning.",
     category: "shoes",
@@ -588,7 +588,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-17").toISOString(),
   },
   {
-    id: "35",
+    _id: "35",
     title: "Tretorn Micro X Tennis Balls",
     description: "Pressureless tennis balls. Pack of 18. Last longer.",
     category: "balls",
@@ -605,7 +605,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-16").toISOString(),
   },
   {
-    id: "36",
+    _id: "36",
     title: "Tecnifibre Endurance Racket Bag",
     description: "Thermal bag for 9 rackets. Excellent protection.",
     category: "bag",
@@ -622,7 +622,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-15").toISOString(),
   },
   {
-    id: "37",
+    _id: "37",
     title: "Wilson Ultra 100 V4",
     description: "Power racket with modern design. Used for 2 months.",
     category: "racket",
@@ -639,7 +639,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-14").toISOString(),
   },
   {
-    id: "38",
+    _id: "38",
     title: "Nike Tennis Headband",
     description: "Sweat-wicking headband. Pack of 3 different colors.",
     category: "accessories",
@@ -656,7 +656,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-13").toISOString(),
   },
   {
-    id: "39",
+    _id: "39",
     title: "Fila Tennis Track Pants",
     description: "Comfortable track pants for tennis, size L.",
     category: "apparel",
@@ -673,7 +673,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-12").toISOString(),
   },
   {
-    id: "40",
+    _id: "40",
     title: "Dunlop SX 300 Tour",
     description: "Advanced racket for tournament players. Well maintained.",
     category: "racket",
@@ -690,7 +690,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-11").toISOString(),
   },
   {
-    id: "41",
+    _id: "41",
     title: "Diadora Speed Blushield",
     description: "Italian-made tennis shoes, size 10.5. Premium quality.",
     category: "shoes",
@@ -707,7 +707,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-10").toISOString(),
   },
   {
-    id: "42",
+    _id: "42",
     title: "Babolat Gold Championship Balls",
     description: "Tournament-grade tennis balls. Pack of 12.",
     category: "balls",
@@ -724,7 +724,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-09").toISOString(),
   },
   {
-    id: "43",
+    _id: "43",
     title: "Yonex Pro Racquet Bag",
     description: "Professional racket bag with thermal protection.",
     category: "bag",
@@ -741,7 +741,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-08").toISOString(),
   },
   {
-    id: "44",
+    _id: "44",
     title: "Prince Warrior 100",
     description: "Arm-friendly racket with good power. Excellent condition.",
     category: "racket",
@@ -758,7 +758,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-07").toISOString(),
   },
   {
-    id: "45",
+    _id: "45",
     title: "Adidas Tennis Socks",
     description: "Pack of 6 pairs. Cushioned tennis socks.",
     category: "accessories",
@@ -775,7 +775,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-06").toISOString(),
   },
   {
-    id: "46",
+    _id: "46",
     title: "Sergio Tacchini Tennis Jacket",
     description: "Classic tennis jacket, size XL. Vintage style.",
     category: "apparel",
@@ -792,7 +792,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-05").toISOString(),
   },
   {
-    id: "47",
+    _id: "47",
     title: "Tecnifibre TFight 315",
     description: "Heavier version for baseline players. Great stability.",
     category: "racket",
@@ -809,7 +809,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-04").toISOString(),
   },
   {
-    id: "48",
+    _id: "48",
     title: "Lotto Raptor Ultra",
     description: "Lightweight tennis shoes, size 9.5. Italian design.",
     category: "shoes",
@@ -826,7 +826,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-03").toISOString(),
   },
   {
-    id: "49",
+    _id: "49",
     title: "Wilson US Open Tennis Balls",
     description: "Official US Open balls. Pack of 18.",
     category: "balls",
@@ -843,7 +843,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-02").toISOString(),
   },
   {
-    id: "50",
+    _id: "50",
     title: "Head Tour Team Supercombi",
     description: "Compact bag for essentials. Perfect for club play.",
     category: "bag",
@@ -860,7 +860,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-09-01").toISOString(),
   },
   {
-    id: "51",
+    _id: "51",
     title: "Babolat Pure Strike 98",
     description: "Precision racket for advanced players. Recently restrung.",
     category: "racket",
@@ -877,7 +877,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-08-31").toISOString(),
   },
   {
-    id: "52",
+    _id: "52",
     title: "Wilson Tennis Grip Tape",
     description: "Pack of 12 overgrips. Various colors available.",
     category: "accessories",
@@ -894,7 +894,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-08-30").toISOString(),
   },
   {
-    id: "53",
+    _id: "53",
     title: "Reebok Tennis Dress",
     description: "Sporty tennis dress, size M. Built-in bra support.",
     category: "apparel",
@@ -911,7 +911,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-08-29").toISOString(),
   },
   {
-    id: "54",
+    _id: "54",
     title: "Yonex VCore 98",
     description: "Spin-friendly racket with excellent control.",
     category: "racket",
@@ -928,7 +928,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-08-28").toISOString(),
   },
   {
-    id: "55",
+    _id: "55",
     title: "Fila Axilus 2 Energized",
     description: "Energetic tennis shoes, size 10. Maximum comfort.",
     category: "shoes",
@@ -945,7 +945,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-08-27").toISOString(),
   },
   {
-    id: "56",
+    _id: "56",
     title: "Head ATP Golden Balls",
     description: "Premium tennis balls used in ATP tournaments. Pack of 12.",
     category: "balls",
@@ -962,7 +962,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-08-26").toISOString(),
   },
   {
-    id: "57",
+    _id: "57",
     title: "Wilson Roland Garros Team Bag",
     description: "Limited edition bag from French Open. 6 racket capacity.",
     category: "bag",
@@ -979,7 +979,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-08-25").toISOString(),
   },
   {
-    id: "58",
+    _id: "58",
     title: "Dunlop Biomimetic M3.0",
     description: "Versatile racket for intermediate players. Good condition.",
     category: "racket",
@@ -996,7 +996,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-08-24").toISOString(),
   },
   {
-    id: "59",
+    _id: "59",
     title: "Babolat Tennis Elbow Support",
     description: "Compression sleeve for tennis elbow. Size L.",
     category: "accessories",
@@ -1013,7 +1013,7 @@ let equipmentStore: TennisEquipment[] = [
     createdAt: new Date("2024-08-23").toISOString(),
   },
   {
-    id: "60",
+    _id: "60",
     title: "Ellesse Tennis Hoodie",
     description: "Warm-up hoodie for tennis, size L. Classic design.",
     category: "apparel",
@@ -1037,16 +1037,16 @@ export function getAllEquipment(): TennisEquipment[] {
   );
 }
 
-export function getEquipmentById(id: string): TennisEquipment | undefined {
-  return equipmentStore.find((item) => item.id === id);
+export function getEquipmentById(_id: string): TennisEquipment | undefined {
+  return equipmentStore.find((item) => item._id === _id);
 }
 
 export function addEquipment(
-  equipment: Omit<TennisEquipment, "id" | "createdAt">
+  equipment: Omit<TennisEquipment, "_id" | "createdAt">
 ): TennisEquipment {
   const newEquipment: TennisEquipment = {
     ...equipment,
-    id: Date.now().toString(),
+    _id: Date.now().toString(),
     createdAt: new Date().toISOString(),
   };
   equipmentStore.push(newEquipment);

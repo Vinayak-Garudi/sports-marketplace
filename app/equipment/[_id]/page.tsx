@@ -1,20 +1,26 @@
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { getEquipmentById } from '@/lib/data';
-import ContactSellerButton from '@/components/ContactSellerButton';
-import ImageGallery from '@/components/ImageGallery';
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { getEquipmentById } from "@/lib/data";
+import ContactSellerButton from "@/components/ContactSellerButton";
+import ImageGallery from "@/components/ImageGallery";
 
 interface EquipmentPageProps {
   params: Promise<{
-    id: string;
+    _id: string;
   }>;
 }
 
 export default async function EquipmentPage({ params }: EquipmentPageProps) {
-  const { id } = await params;
-  const equipment = getEquipmentById(id);
+  const { _id } = await params;
+  const equipment = getEquipmentById(_id);
 
   if (!equipment) {
     notFound();
@@ -24,7 +30,9 @@ export default async function EquipmentPage({ params }: EquipmentPageProps) {
     <div className="min-h-screen py-8">
       <div className="container mx-auto px-4 max-w-4xl">
         <Link href="/browse">
-          <Button variant="ghost" className="mb-6">← Back to Browse</Button>
+          <Button variant="ghost" className="mb-6">
+            ← Back to Browse
+          </Button>
         </Link>
 
         <div className="grid gap-8">
@@ -37,7 +45,9 @@ export default async function EquipmentPage({ params }: EquipmentPageProps) {
             <CardHeader>
               <div className="flex justify-between items-start gap-4 mb-4">
                 <div>
-                  <CardTitle className="text-3xl mb-2">{equipment.title}</CardTitle>
+                  <CardTitle className="text-3xl mb-2">
+                    {equipment.title}
+                  </CardTitle>
                   <div className="flex gap-2 flex-wrap">
                     <span className="text-sm bg-primary/10 text-primary px-3 py-1 rounded-full capitalize">
                       {equipment.category}
@@ -47,13 +57,17 @@ export default async function EquipmentPage({ params }: EquipmentPageProps) {
                     </span>
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-primary">Rs.{equipment.price}</div>
+                <div className="text-4xl font-bold text-primary">
+                  Rs.{equipment.price}
+                </div>
               </div>
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
                 <h3 className="font-semibold text-lg mb-2">Description</h3>
-                <p className="text-muted-foreground leading-relaxed">{equipment.description}</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  {equipment.description}
+                </p>
               </div>
 
               <div className="border-t pt-6">
@@ -61,30 +75,47 @@ export default async function EquipmentPage({ params }: EquipmentPageProps) {
                 <div className="grid sm:grid-cols-2 gap-4">
                   {equipment.brand && (
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Brand</div>
+                      <div className="text-sm text-muted-foreground mb-1">
+                        Brand
+                      </div>
                       <div className="font-medium">{equipment.brand}</div>
                     </div>
                   )}
                   <div>
-                    <div className="text-sm text-muted-foreground mb-1">Category</div>
-                    <div className="font-medium capitalize">{equipment.category}</div>
+                    <div className="text-sm text-muted-foreground mb-1">
+                      Category
+                    </div>
+                    <div className="font-medium capitalize">
+                      {equipment.category}
+                    </div>
                   </div>
                   <div>
-                    <div className="text-sm text-muted-foreground mb-1">Condition</div>
-                    <div className="font-medium capitalize">{equipment.condition}</div>
+                    <div className="text-sm text-muted-foreground mb-1">
+                      Condition
+                    </div>
+                    <div className="font-medium capitalize">
+                      {equipment.condition}
+                    </div>
                   </div>
                   <div>
-                    <div className="text-sm text-muted-foreground mb-1">Location</div>
+                    <div className="text-sm text-muted-foreground mb-1">
+                      Location
+                    </div>
                     <div className="font-medium">{equipment.location}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-muted-foreground mb-1">Listed</div>
+                    <div className="text-sm text-muted-foreground mb-1">
+                      Listed
+                    </div>
                     <div className="font-medium">
-                      {new Date(equipment.createdAt).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
+                      {new Date(equipment.createdAt).toLocaleDateString(
+                        "en-US",
+                        {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        }
+                      )}
                     </div>
                   </div>
                 </div>
@@ -95,15 +126,21 @@ export default async function EquipmentPage({ params }: EquipmentPageProps) {
           <Card>
             <CardHeader>
               <CardTitle>Seller Information</CardTitle>
-              <CardDescription>Contact the seller to arrange viewing or purchase</CardDescription>
+              <CardDescription>
+                Contact the seller to arrange viewing or purchase
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <div className="text-sm text-muted-foreground mb-1">Seller Name</div>
+                <div className="text-sm text-muted-foreground mb-1">
+                  Seller Name
+                </div>
                 <div className="font-medium">{equipment.sellerName}</div>
               </div>
               <div>
-                <div className="text-sm text-muted-foreground mb-1">Location</div>
+                <div className="text-sm text-muted-foreground mb-1">
+                  Location
+                </div>
                 <div className="font-medium">{equipment.location}</div>
               </div>
               <div>
@@ -111,7 +148,9 @@ export default async function EquipmentPage({ params }: EquipmentPageProps) {
                 <div className="font-medium">{equipment.sellerEmail}</div>
               </div>
               <div>
-                <div className="text-sm text-muted-foreground mb-1">Phone Number</div>
+                <div className="text-sm text-muted-foreground mb-1">
+                  Phone Number
+                </div>
                 <div className="font-medium">{equipment.sellerPhone}</div>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 pt-4">

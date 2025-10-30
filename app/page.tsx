@@ -1,8 +1,14 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { getAllEquipment } from '@/lib/data';
-import EquipmentCard from '@/components/EquipmentCard';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { getAllEquipment } from "@/lib/data";
+import EquipmentCard from "@/components/EquipmentCard";
 
 export default function Home() {
   const equipment = getAllEquipment().slice(0, 6);
@@ -39,7 +45,8 @@ export default function Home() {
             <CardHeader>
               <CardTitle>Browse</CardTitle>
               <CardDescription>
-                Search through a wide selection of second-hand tennis equipment from local sellers.
+                Search through a wide selection of second-hand tennis equipment
+                from local sellers.
               </CardDescription>
             </CardHeader>
           </Card>
@@ -47,7 +54,8 @@ export default function Home() {
             <CardHeader>
               <CardTitle>Connect</CardTitle>
               <CardDescription>
-                Contact sellers directly via email or phone to arrange viewing and purchase.
+                Contact sellers directly via email or phone to arrange viewing
+                and purchase.
               </CardDescription>
             </CardHeader>
           </Card>
@@ -73,7 +81,7 @@ export default function Home() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {equipment.map((item) => (
-              <EquipmentCard key={item.id} equipment={item} />
+              <EquipmentCard key={item._id} equipment={item} />
             ))}
           </div>
         </div>

@@ -21,7 +21,7 @@ export default function EquipmentCard({
 }: EquipmentCardProps) {
   return (
     <div className="relative h-full">
-      <Link href={`/equipment/${equipment.id}`}>
+      <Link href={`/equipment/${equipment._id}`}>
         <Card className="hover:shadow-lg transition-shadow flex flex-col overflow-hidden h-full">
           {/* Image Section */}
           <div className="relative w-full aspect-video bg-muted">
@@ -71,7 +71,7 @@ export default function EquipmentCard({
       </Link>
 
       {/* Delete Button */}
-      {isAdmin && <DeleteButton equipmentId={equipment.id} />}
+      {isAdmin && <DeleteButton equipmentId={equipment._id} />}
     </div>
   );
 }

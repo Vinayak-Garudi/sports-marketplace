@@ -157,7 +157,7 @@ export default function EquipmentList({
 
       <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {equipment.map((item) => (
-          <EquipmentCard key={item.id} equipment={item} isAdmin={isAdmin} />
+          <EquipmentCard key={item._id} equipment={item} isAdmin={isAdmin} />
         ))}
       </div>
 
