@@ -1,4 +1,5 @@
 import nextConfig from "@/next.config";
+import { handleClientLogout } from "./authHandlerClient";
 
 interface FetchOptions extends RequestInit {
   params?: Record<string, string>;
@@ -45,6 +46,20 @@ export async function apiRequest(
     headers.set("Content-Type", "application/json");
   }
 
+  // Add authorization token from cookies if present
+  if (typeof document !== "undefined") {
+    const cookies = document.cookie.split("; ");
+    const userTokenCookie = cookies.find((cookie) =>
+      cookie.startsWith("user-token")
+    );
+    if (userTokenCookie) {
+      const token = userTokenCookie.split("=")[1];
+      if (token && !headers.has("Authorization")) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+    }
+  }
+
   try {
     const response = await fetch(url.toString(), {
       ...fetchOptions,
@@ -53,6 +68,15 @@ export async function apiRequest(
 
     // Check if the response is OK (status in the range 200-299)
     if (!response.ok) {
+      // Handle 401 Unauthorized - trigger logout
+      if (response.status === 401) {
+        if (typeof window !== "undefined") {
+          // Client-side: redirect to home after logout
+          handleClientLogout();
+          window.location.href = "/";
+        }
+      }
+
       const errorData = await response.json();
       throw errorData;
     }
