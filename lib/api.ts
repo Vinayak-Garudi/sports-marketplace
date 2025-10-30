@@ -1,5 +1,6 @@
 import nextConfig from "@/next.config";
 import { handleClientLogout } from "./authHandlerClient";
+import { toast } from "sonner";
 
 interface FetchOptions extends RequestInit {
   params?: Record<string, string>;
@@ -78,7 +79,20 @@ export async function apiRequest(
       }
 
       const errorData = await response.json();
-      throw errorData;
+      const errorMessage =
+        errorData.message || "Something went wrong from the server side";
+      console.error("API Error:", errorData);
+
+      // Show error toast on client side
+      if (typeof window !== "undefined") {
+        toast.error(errorMessage);
+      }
+
+      return {
+        data: null,
+        message: errorMessage,
+        success: false,
+      };
     }
 
     // Handle empty responses
@@ -94,10 +108,22 @@ export async function apiRequest(
     const data = await response.json();
     return data;
   } catch (error) {
-    if (error instanceof Error) {
-      throw error;
+    const errorMessage =
+      error instanceof Error
+        ? error.message
+        : "Something went wrong from the server side";
+    console.error("Network error:", error);
+
+    // Show error toast on client side
+    if (typeof window !== "undefined") {
+      toast.error(errorMessage);
     }
-    throw new Error("Network error occurred");
+
+    return {
+      data: null,
+      message: errorMessage,
+      success: false,
+    };
   }
 }
 

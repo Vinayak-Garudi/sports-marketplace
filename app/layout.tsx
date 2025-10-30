@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import Navigation from "@/components/Navigation";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +18,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Tennis Marketplace - Buy Second-Hand Tennis Equipment",
-  description: "Buy quality used tennis gear. Connect directly with local sellers.",
+  description:
+    "Buy quality used tennis gear. Connect directly with local sellers.",
 };
 
 export default function RootLayout({
@@ -36,15 +38,14 @@ export default function RootLayout({
               <ThemeSwitcher />
             </div>
             <Navigation />
-            <main className="flex-1">
-              {children}
-            </main>
+            <main className="flex-1">{children}</main>
             <footer className="border-t py-8 mt-auto">
               <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
                 <p>© 2025 Tennis Marketplace. Connect with local sellers.</p>
               </div>
             </footer>
           </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
