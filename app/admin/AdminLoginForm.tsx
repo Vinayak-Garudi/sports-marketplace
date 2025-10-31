@@ -38,10 +38,8 @@ export default function AdminLoginForm() {
 
       const response = await apiRequest("auth/login", {
         method: "POST",
-        body: loginData,
+        body: JSON.stringify(loginData),
       });
-
-      console.log("Login response:", response.data);
 
       // Set user role in cookies
       document.cookie = `user-role=${

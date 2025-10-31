@@ -1,5 +1,5 @@
 export interface TennisEquipment {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   category: "racket" | "shoes" | "bag" | "balls" | "accessories" | "apparel";

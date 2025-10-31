@@ -81,7 +81,7 @@ export default function Home() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {equipment.map((item) => (
-              <EquipmentCard key={item._id} equipment={item} />
+              <EquipmentCard key={item.id} equipment={item} />
             ))}
           </div>
         </div>

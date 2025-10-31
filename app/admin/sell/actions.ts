@@ -42,24 +42,9 @@ export async function submitEquipment(formData: FormData) {
       };
     }
 
-    // Add equipment to the store
-    // const newEquipment = addEquipment({
-    //   title,
-    //   description,
-    //   category,
-    //   condition,
-    //   price,
-    //   brand: brand || undefined,
-    //   sellerName,
-    //   sellerEmail,
-    //   sellerPhone,
-    //   location,
-    //   images,
-    // });
-
-    const newEquipment = await apiRequest("/equipment", {
+    const newEquipment = await apiRequest("equipments", {
       method: "POST",
-      body: {
+      body: JSON.stringify({
         title,
         description,
         category,
@@ -71,7 +56,7 @@ export async function submitEquipment(formData: FormData) {
         sellerPhone,
         location,
         images,
-      },
+      }),
     });
 
     return {

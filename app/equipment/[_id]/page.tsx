@@ -14,13 +14,13 @@ import ImageGallery from "@/components/ImageGallery";
 
 interface EquipmentPageProps {
   params: Promise<{
-    _id: string;
+    id: string;
   }>;
 }
 
 export default async function EquipmentPage({ params }: EquipmentPageProps) {
-  const { _id } = await params;
-  const equipment = getEquipmentById(_id);
+  const { id } = await params;
+  const equipment = getEquipmentById(id);
 
   if (!equipment) {
     notFound();
