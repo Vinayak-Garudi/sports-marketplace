@@ -2,8 +2,9 @@ import nextConfig from "@/next.config";
 import { handleClientLogout } from "./authHandlerClient";
 import { toast } from "sonner";
 
-interface FetchOptions extends RequestInit {
+interface FetchOptions extends Omit<RequestInit, "body"> {
   params?: Record<string, string>;
+  body?: any; // Allow any type for body - will be stringified if needed
 }
 
 interface ApiError extends Error {
@@ -38,6 +39,17 @@ export async function apiRequest(
     });
   }
 
+  // Automatically stringify body if it's an object (but not FormData or string)
+  let body = fetchOptions.body;
+  if (
+    body &&
+    typeof body === "object" &&
+    !(body instanceof FormData) &&
+    typeof body !== "string"
+  ) {
+    body = JSON.stringify(body);
+  }
+
   // Default headers
   const headers = new Headers(fetchOptions.headers);
   if (
@@ -64,6 +76,7 @@ export async function apiRequest(
   try {
     const response = await fetch(url.toString(), {
       ...fetchOptions,
+      body,
       headers,
     });
 
@@ -140,7 +153,7 @@ export const api = {
     apiRequest(endpoint, {
       ...options,
       method: "POST",
-      body: JSON.stringify(data),
+      body: data,
     }),
 
   put: <T>(
@@ -151,7 +164,7 @@ export const api = {
     apiRequest(endpoint, {
       ...options,
       method: "PUT",
-      body: JSON.stringify(data),
+      body: data,
     }),
 
   patch: <T>(
@@ -162,7 +175,7 @@ export const api = {
     apiRequest(endpoint, {
       ...options,
       method: "PATCH",
-      body: JSON.stringify(data),
+      body: data,
     }),
 
   delete: <T>(endpoint: string, options: Omit<FetchOptions, "method"> = {}) =>

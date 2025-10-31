@@ -1,6 +1,6 @@
 "use server";
 
-import { addEquipment } from "@/lib/data";
+import { apiRequest } from "@/lib/api";
 import { TennisEquipment } from "@/types";
 
 export async function submitEquipment(formData: FormData) {
@@ -43,23 +43,40 @@ export async function submitEquipment(formData: FormData) {
     }
 
     // Add equipment to the store
-    const newEquipment = addEquipment({
-      title,
-      description,
-      category,
-      condition,
-      price,
-      brand: brand || undefined,
-      sellerName,
-      sellerEmail,
-      sellerPhone,
-      location,
-      images,
+    // const newEquipment = addEquipment({
+    //   title,
+    //   description,
+    //   category,
+    //   condition,
+    //   price,
+    //   brand: brand || undefined,
+    //   sellerName,
+    //   sellerEmail,
+    //   sellerPhone,
+    //   location,
+    //   images,
+    // });
+
+    const newEquipment = await apiRequest("/equipment", {
+      method: "POST",
+      body: {
+        title,
+        description,
+        category,
+        condition,
+        price,
+        brand: brand || undefined,
+        sellerName,
+        sellerEmail,
+        sellerPhone,
+        location,
+        images,
+      },
     });
 
     return {
       success: true,
-      _id: newEquipment._id,
+      _id: newEquipment.data._id,
     };
   } catch (error) {
     console.error("Error submitting equipment:", error);

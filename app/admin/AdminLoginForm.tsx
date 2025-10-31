@@ -38,7 +38,7 @@ export default function AdminLoginForm() {
 
       const response = await apiRequest("auth/login", {
         method: "POST",
-        body: JSON.stringify(loginData),
+        body: loginData,
       });
 
       console.log("Login response:", response.data);
