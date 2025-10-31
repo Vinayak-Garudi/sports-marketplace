@@ -10,8 +10,9 @@ import {
 import { getAllEquipment } from "@/lib/data";
 import EquipmentCard from "@/components/EquipmentCard";
 
-export default function Home() {
-  const equipment = getAllEquipment().slice(0, 6);
+export default async function Home() {
+  const allEquipment = await getAllEquipment();
+  const equipment = allEquipment.slice(0, 6);
 
   return (
     <div className="min-h-screen">

@@ -31,7 +31,7 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
     items: equipment,
     total,
     hasMore,
-  } = paginateEquipment(filters, 1, 10);
+  } = await paginateEquipment(filters, 1, 10);
 
   // Check if user is admin (server-side)
   const cookieStore = await cookies();
