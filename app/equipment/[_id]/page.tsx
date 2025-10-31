@@ -8,19 +8,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getEquipmentById } from "@/lib/data";
 import ContactSellerButton from "@/components/ContactSellerButton";
 import ImageGallery from "@/components/ImageGallery";
+import { apiRequest } from "@/lib/api";
 
 interface EquipmentPageProps {
   params: Promise<{
-    id: string;
+    _id: string;
   }>;
 }
 
 export default async function EquipmentPage({ params }: EquipmentPageProps) {
-  const { id } = await params;
-  const equipment = getEquipmentById(id);
+  const { _id } = await params;
+  const equipment = (await apiRequest(`equipments/${_id}`)).data;
 
   if (!equipment) {
     notFound();

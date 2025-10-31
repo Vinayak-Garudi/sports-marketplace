@@ -1037,10 +1037,6 @@ export function getAllEquipment(): TennisEquipment[] {
   );
 }
 
-export function getEquipmentById(id: string): TennisEquipment | undefined {
-  return equipmentStore.find((item) => item.id === id);
-}
-
 export function addEquipment(
   equipment: Omit<TennisEquipment, "id" | "createdAt">
 ): TennisEquipment {
