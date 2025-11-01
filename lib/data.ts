@@ -22,6 +22,39 @@ export async function getAllEquipment(): Promise<TennisEquipment[]> {
   }
 }
 
+// Search equipment using backend API
+export async function searchEquipment(
+  searchTerm: string
+): Promise<TennisEquipment[]> {
+  try {
+    if (!searchTerm || searchTerm.trim() === "") {
+      return getAllEquipment();
+    }
+
+    // The backend expects 'q' as the query parameter name
+    const response = await apiRequest(
+      `equipments/search?q=${encodeURIComponent(searchTerm.trim())}`,
+      {
+        method: "GET",
+      }
+    );
+
+    if (response.success && response.data) {
+      const equipment = Array.isArray(response.data) ? response.data : [];
+      // Sort by creation date, newest first
+      return equipment.sort(
+        (a: TennisEquipment, b: TennisEquipment) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+    }
+
+    return [];
+  } catch (error) {
+    console.error("Error searching equipment:", error);
+    return [];
+  }
+}
+
 export function addEquipment(
   equipment: Omit<TennisEquipment, "id" | "createdAt">
 ): TennisEquipment {
@@ -43,8 +76,16 @@ export async function filterEquipment(filters: {
   maxPrice?: number;
   search?: string;
 }): Promise<TennisEquipment[]> {
-  let filtered = await getAllEquipment();
+  // Use search API if search term is provided
+  let filtered: TennisEquipment[];
 
+  if (filters.search && filters.search.trim()) {
+    filtered = await searchEquipment(filters.search);
+  } else {
+    filtered = await getAllEquipment();
+  }
+
+  // Apply additional filters on the search results
   if (filters.category && filters.category !== "all") {
     filtered = filtered.filter((item) => item.category === filters.category);
   }
@@ -59,17 +100,6 @@ export async function filterEquipment(filters: {
 
   if (filters.maxPrice !== undefined) {
     filtered = filtered.filter((item) => item.price <= filters.maxPrice!);
-  }
-
-  if (filters.search) {
-    const searchLower = filters.search.toLowerCase();
-    filtered = filtered.filter(
-      (item) =>
-        item.title.toLowerCase().includes(searchLower) ||
-        item.description.toLowerCase().includes(searchLower) ||
-        item.brand?.toLowerCase().includes(searchLower) ||
-        item.location.toLowerCase().includes(searchLower)
-    );
   }
 
   return filtered;

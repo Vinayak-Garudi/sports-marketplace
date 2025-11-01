@@ -12,7 +12,7 @@ import EquipmentCard from "@/components/EquipmentCard";
 
 export default async function Home() {
   const allEquipment = await getAllEquipment();
-  const equipment = allEquipment.slice(0, 6);
+  const equipment = allEquipment.slice(0, 3);
 
   return (
     <div className="min-h-screen">
@@ -87,28 +87,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      {/* <section className="py-16 container mx-auto px-4">
-        <Card className="bg-primary text-primary-foreground">
-          <CardHeader className="text-center">
-            <CardTitle className="text-3xl mb-4">Ready to Get Started?</CardTitle>
-            <CardDescription className="text-primary-foreground/80 text-lg mb-6">
-              Join our community of tennis enthusiasts buying and selling quality equipment.
-            </CardDescription>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/sell">
-                <Button size="lg" variant="secondary">List Your Equipment</Button>
-              </Link>
-              <Link href="/browse">
-                <Button size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
-                  Start Shopping
-                </Button>
-              </Link>
-            </div>
-          </CardHeader>
-        </Card>
-      </section> */}
     </div>
   );
 }
