@@ -10,6 +10,8 @@ import {
 import { getAllEquipment } from "@/lib/data";
 import EquipmentCard from "@/components/EquipmentCard";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const allEquipment = await getAllEquipment();
   const equipment = allEquipment.slice(0, 3);

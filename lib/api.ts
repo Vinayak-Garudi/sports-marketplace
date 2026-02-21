@@ -29,6 +29,13 @@ export async function apiRequest(
   endpoint: string,
   options: FetchOptions = {},
 ): Promise<ApiResponse> {
+  if (!BASE_URL) {
+    console.warn(
+      "API URL is not configured. Set NEXT_PUBLIC_API_URL environment variable.",
+    );
+    return { data: null, message: "API URL is not configured", success: false };
+  }
+
   const { params, ...fetchOptions } = options;
   // Construct URL with query parameters if they exist
   const url = new URL(endpoint, BASE_URL);
