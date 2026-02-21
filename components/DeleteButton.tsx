@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { apiRequest } from "@/lib/api";
+import { toast } from "sonner";
 
 interface DeleteButtonProps {
   equipmentId: string;
@@ -12,15 +15,21 @@ interface DeleteButtonProps {
 
 export default function DeleteButton({ equipmentId }: DeleteButtonProps) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleCancel = () => {
     setOpen(false);
   };
 
-  const handleConfirmDelete = () => {
-    // TODO: Add delete functionality here
-    console.log("Delete equipment:", equipmentId);
+  const handleConfirmDelete = async () => {
     setOpen(false);
+    const result = await apiRequest(`/api/equipments/${equipmentId}`, {
+      method: "DELETE",
+    });
+    if (result.success) {
+      toast.success("Equipment deleted successfully");
+      router.refresh();
+    }
   };
 
   return (
