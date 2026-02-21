@@ -57,7 +57,9 @@ export default function ImageUpload({
         body: formData,
       });
 
-      const imageUrls = result.data.map((img: { url: string }) => img.url);
+      const imageUrls = (result.data as { url: string }[]).map(
+        (img) => img.url,
+      );
       onImagesChange([...images, ...imageUrls]);
     } catch (error) {
       console.error("Upload error:", error);

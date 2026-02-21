@@ -61,7 +61,7 @@ export async function submitEquipment(formData: FormData) {
 
     return {
       success: true,
-      _id: newEquipment.data._id,
+      _id: (newEquipment.data as { _id: string })._id,
     };
   } catch (error) {
     console.error("Error submitting equipment:", error);

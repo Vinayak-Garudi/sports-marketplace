@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build-dev": "next build --turbopack --env-file .env.development",
-    "build-prod": "next build --turbopack --env-file .env.production",
-    "start-dev": "next start --env-file .env.development",
-    "start-prod": "next start --env-file .env.production",
+    "build-dev": "NODE_ENV=development next build --turbopack",
+    "build-prod": "next build --turbopack",
+    "start-dev": "NODE_ENV=development next start",
+    "start-prod": "next start",
     "lint": "eslint"
   },
   "dependencies": {

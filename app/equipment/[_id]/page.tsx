@@ -11,6 +11,7 @@ import {
 import ContactSellerButton from "@/components/ContactSellerButton";
 import ImageGallery from "@/components/ImageGallery";
 import { apiRequest } from "@/lib/api";
+import { TennisEquipment } from "@/types";
 
 interface EquipmentPageProps {
   params: Promise<{
@@ -20,7 +21,8 @@ interface EquipmentPageProps {
 
 export default async function EquipmentPage({ params }: EquipmentPageProps) {
   const { _id } = await params;
-  const equipment = (await apiRequest(`equipments/${_id}`)).data;
+  const equipment = (await apiRequest(`equipments/${_id}`))
+    .data as TennisEquipment | null;
 
   if (!equipment) {
     notFound();
@@ -114,7 +116,7 @@ export default async function EquipmentPage({ params }: EquipmentPageProps) {
                           year: "numeric",
                           month: "long",
                           day: "numeric",
-                        }
+                        },
                       )}
                     </div>
                   </div>

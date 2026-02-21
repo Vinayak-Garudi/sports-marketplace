@@ -8,11 +8,11 @@ interface FetchOptions extends RequestInit {
 
 interface ApiError extends Error {
   status?: number;
-  data?: any;
+  data?: unknown;
 }
 
 type ApiResponse = {
-  data: any;
+  data: unknown;
   message: string;
   success: boolean;
 };
@@ -27,7 +27,7 @@ const BASE_URL = nextConfig?.publicRuntimeConfig?.apiUrl || "";
  */
 export async function apiRequest(
   endpoint: string,
-  options: FetchOptions = {}
+  options: FetchOptions = {},
 ): Promise<ApiResponse> {
   const { params, ...fetchOptions } = options;
   // Construct URL with query parameters if they exist
@@ -67,7 +67,7 @@ export async function apiRequest(
   if (!token && typeof document !== "undefined") {
     const documentCookies = document.cookie.split("; ");
     const userTokenCookie = documentCookies.find((cookie) =>
-      cookie.startsWith("user-token")
+      cookie.startsWith("user-token"),
     );
     if (userTokenCookie) {
       token = userTokenCookie.split("=")[1];
@@ -147,13 +147,13 @@ export async function apiRequest(
 
 // Common HTTP method helpers
 export const api = {
-  get: <T>(endpoint: string, options: Omit<FetchOptions, "method"> = {}) =>
+  get: (endpoint: string, options: Omit<FetchOptions, "method"> = {}) =>
     apiRequest(endpoint, { ...options, method: "GET" }),
 
-  post: <T>(
+  post: (
     endpoint: string,
-    data?: any,
-    options: Omit<FetchOptions, "method" | "body"> = {}
+    data?: unknown,
+    options: Omit<FetchOptions, "method" | "body"> = {},
   ) =>
     apiRequest(endpoint, {
       ...options,
@@ -161,10 +161,10 @@ export const api = {
       body: JSON.stringify(data),
     }),
 
-  put: <T>(
+  put: (
     endpoint: string,
-    data?: any,
-    options: Omit<FetchOptions, "method" | "body"> = {}
+    data?: unknown,
+    options: Omit<FetchOptions, "method" | "body"> = {},
   ) =>
     apiRequest(endpoint, {
       ...options,
@@ -172,10 +172,10 @@ export const api = {
       body: JSON.stringify(data),
     }),
 
-  patch: <T>(
+  patch: (
     endpoint: string,
-    data?: any,
-    options: Omit<FetchOptions, "method" | "body"> = {}
+    data?: unknown,
+    options: Omit<FetchOptions, "method" | "body"> = {},
   ) =>
     apiRequest(endpoint, {
       ...options,
@@ -183,7 +183,7 @@ export const api = {
       body: JSON.stringify(data),
     }),
 
-  delete: <T>(endpoint: string, options: Omit<FetchOptions, "method"> = {}) =>
+  delete: (endpoint: string, options: Omit<FetchOptions, "method"> = {}) =>
     apiRequest(endpoint, { ...options, method: "DELETE" }),
 };
 

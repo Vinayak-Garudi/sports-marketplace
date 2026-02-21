@@ -12,7 +12,7 @@ export const getItem = (key: string) => {
   return null; // Return null for server-side rendering
 };
 
-export const setItem = (key: string, value: any) => {
+export const setItem = (key: string, value: unknown) => {
   if (typeof window !== "undefined") {
     // Check for window object (client-side only)
     try {

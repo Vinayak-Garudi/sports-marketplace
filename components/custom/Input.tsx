@@ -1,17 +1,20 @@
-import { Input as ShadcnInput } from "@/components/ui/input"
-import { cn } from "@/lib/utils"
-import { IconType } from "react-icons"
-import { InputHTMLAttributes, forwardRef } from "react"
+import { Input as ShadcnInput } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+import { IconType } from "react-icons";
+import { InputHTMLAttributes, forwardRef } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  icon?: IconType
-  iconClassName?: string
-  error?: boolean
-  helperText?: string
+  icon?: IconType;
+  iconClassName?: string;
+  error?: boolean;
+  helperText?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, icon: Icon, iconClassName, error, helperText, ...props }, ref) => {
+  (
+    { className, icon: Icon, iconClassName, error, helperText, ...props },
+    ref,
+  ) => {
     return (
       <div className="w-full">
         <div className="relative">
@@ -19,7 +22,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             <Icon
               className={cn(
                 "absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500",
-                iconClassName
+                iconClassName,
               )}
             />
           )}
@@ -29,7 +32,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 "pl-9": Icon,
                 "border-red-500 focus-visible:ring-red-500": error,
               },
-              className
+              className,
             )}
             ref={ref}
             {...props}
@@ -46,6 +49,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </p>
         )}
       </div>
-    )
-  }
-)
+    );
+  },
+);
+Input.displayName = "Input";

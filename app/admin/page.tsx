@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Card } from "@/components/custom/Card";
 import AdminLoginForm from "./AdminLoginForm";
 
@@ -18,12 +19,12 @@ export default function AdminLogin() {
           <AdminLoginForm />
 
           <div className="mt-6 text-center">
-            <a
+            <Link
               href="/"
               className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
             >
               ← Back to Home
-            </a>
+            </Link>
           </div>
         </Card>
       </div>

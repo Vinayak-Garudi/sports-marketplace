@@ -42,10 +42,14 @@ export default function AdminLoginForm() {
       });
 
       // Set user role in cookies
+      const loginResponse = response.data as {
+        user: { role: string };
+        token: string;
+      };
       document.cookie = `user-role=${
-        response.data.user.role
+        loginResponse.user.role
       }; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days expiry
-      document.cookie = `user-token=${response.data.token}; path=/; max-age=${
+      document.cookie = `user-token=${loginResponse.token}; path=/; max-age=${
         60 * 60 * 24 * 7
       }`; // 7 days expiry
 
