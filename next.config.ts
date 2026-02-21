@@ -1,14 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Load environment variables based on NODE_ENV
-  serverRuntimeConfig: {
-    // Will only be available on the server side
-  },
-  publicRuntimeConfig: {
-    // Will be available on both server and client
-    apiUrl: process.env.NEXT_PUBLIC_API_URL,
-  },
+  // Runtime config has been removed in Next.js 16
+  // Use environment variables directly with NEXT_PUBLIC_ prefix for client-side access
+  // Server-side: process.env.VARIABLE_NAME
+  // Client-side: process.env.NEXT_PUBLIC_VARIABLE_NAME
 };
 
 export default nextConfig;

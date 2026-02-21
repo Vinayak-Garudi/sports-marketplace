@@ -1,4 +1,3 @@
-import nextConfig from "@/next.config";
 import { handleClientLogout } from "./authHandlerClient";
 import { toast } from "sonner";
 
@@ -17,7 +16,8 @@ type ApiResponse = {
   success: boolean;
 };
 
-const BASE_URL = nextConfig?.publicRuntimeConfig?.apiUrl || "";
+// Next.js 16: Runtime config removed - use environment variables directly
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 /**
  * Handles API requests with proper error handling and type safety
